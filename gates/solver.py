@@ -31,7 +31,7 @@ def solve(syms):
     n = len(syms_list)
     combs = generate_combinations(n)
     
-    python_expr = input("Expression here: ")
+    python_expr = input("The formula you need to calculate: ")
     results = []
     
     for i in range(combs.shape[1]):
