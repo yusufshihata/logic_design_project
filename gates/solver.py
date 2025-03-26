@@ -41,6 +41,16 @@ def solve(syms):
     
     print_truth_table(syms_list, combs, results)
 
+def tutorial():
+    print("Welcome to our Boolean Algebra Calculator")
+    print("-----------------------------------------")
+    print("AND gate can be written as (and, &)")
+    print("OR gate can be written as (or, |)")
+    print("NOT gate can be written as (not)")
+    print("XOR gate can be written as (^)")
+    print("NAND, XNOR, NOR can be written as a combinations of AND, OR, and not")
+
+tutorial()
 symbols = input("Input your formula symbols: ")
 solve(symbols)
 
