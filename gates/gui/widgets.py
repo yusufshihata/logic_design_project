@@ -5,11 +5,11 @@ class StyledEntry(ctk.CTkEntry):
         super().__init__(master, **kwargs)
         self.configure(
             font=("Poppins", 14),
-            fg_color="#212121",     # Background color
-            text_color="white",     # Text color
+            fg_color="#212121",
+            text_color="white",
             border_width=1,
             border_color="#1E88E5",
-            corner_radius=10        # Rounded corners
+            corner_radius=10
         )
 
 class StyledButton(ctk.CTkButton):
@@ -17,10 +17,10 @@ class StyledButton(ctk.CTkButton):
         super().__init__(master, **kwargs)
         self.configure(
             font=("Poppins", 14, "bold"),
-            fg_color="#1E88E5",     # Button color
+            fg_color="#1E88E5",
             text_color="white",
             hover_color="#1565C0",
-            corner_radius=10,       # Rounded corners
+            corner_radius=10,
             border_width=0
         )
 

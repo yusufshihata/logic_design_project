@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
 import numpy as np
-import customtkinter as ctk  # Use customtkinter for modern widgets
+import customtkinter as ctk
 from gui.screens import MainPage, ResultPage, TutorialPage
 
-# Set customtkinter appearance (Dark mode and a default theme)
-ctk.set_appearance_mode("dark")
+ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("blue")
 
 class BooleanAlgebraCalculator:
@@ -13,24 +12,20 @@ class BooleanAlgebraCalculator:
         self.master = master
         self.master.title("Boolean Algebra Calculator")
         self.master.geometry("800x500")
-        self.master.resizable(False, False)
+        self.master.resizable(True, True)
 
-        # Use CTkFrame as the container for a consistent look
         self.container = ctk.CTkFrame(master, fg_color="#121212")
         self.container.pack(side="top", fill="both", expand=True)
         self.container.grid_rowconfigure(0, weight=1)
         self.container.grid_columnconfigure(0, weight=1)
 
-        # Dictionary to store different pages
         self.frames = {}
         
-        # Create pages (MainPage, ResultPage, and TutorialPage)
         for F in (MainPage, ResultPage, TutorialPage):
             frame = F(self.container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
-        # Show the main page
         self.show_frame(MainPage)
 
     def show_frame(self, cont):
@@ -50,7 +45,6 @@ class BooleanAlgebraCalculator:
         return combs.astype(int)
 
 def main():
-    # Use CTk for the main window
     root = ctk.CTk()
     app = BooleanAlgebraCalculator(root)
     root.mainloop()
