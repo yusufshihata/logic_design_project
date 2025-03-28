@@ -9,7 +9,8 @@ class StyledEntry(ctk.CTkEntry):
             text_color="white",
             border_width=1,
             border_color="#1E88E5",
-            corner_radius=10
+            corner_radius=10,
+            height=50
         )
 
 class StyledButton(ctk.CTkButton):
@@ -21,6 +22,8 @@ class StyledButton(ctk.CTkButton):
             text_color="white",
             hover_color="#1565C0",
             corner_radius=10,
-            border_width=0
+            border_width=0,
+            height=50,
+            width=150,
         )
 

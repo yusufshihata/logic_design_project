@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import ttk, messagebox
-from gui.widgets import StyledButton, StyledEntry
+from app.widgets import StyledButton, StyledEntry
 
 class MainPage(ctk.CTkFrame):
     def __init__(self, parent, controller):
