@@ -12,7 +12,7 @@ class BooleanAlgebraCalculator:
     def __init__(self, master):
         self.master = master
         self.master.title("Boolean Algebra Calculator")
-        self.master.geometry("800x400")
+        self.master.geometry("800x500")
         self.master.resizable(False, False)
 
         # Use CTkFrame as the container for a consistent look
