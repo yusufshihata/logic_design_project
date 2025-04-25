@@ -6,7 +6,7 @@ from app.pages.calculationPage import CalculationPage
 from app.pages.mainPage import MainPage
 from app.pages.resultPage import ResultPage
 from app.pages.tutorialPage import TutorialPage
-from app.pages.unitConversionPage import MeasurementUnitConversionPage
+from app.pages.unitConversionPage import StorageUnitConversionPage
 from app.pages.numericalConversionPage import NumericalSystemConversionPage
 
 ctk.set_appearance_mode("System")
@@ -30,7 +30,7 @@ class BooleanAlgebraCalculator:
             CalculationPage,
             ResultPage,
             TutorialPage,
-            MeasurementUnitConversionPage,
+            StorageUnitConversionPage,
             NumericalSystemConversionPage
         ]:
             name = PageClass.__name__
