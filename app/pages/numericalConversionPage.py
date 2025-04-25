@@ -59,5 +59,12 @@ class NumericalSystemConversionPage(ctk.CTkFrame):
         StyledButton(container, text="Back",
                      command=lambda: controller.show_frame("MainPage")).grid(row=6, column=0, columnspan=2)
 
+    def get_data(self):
+        from_system = self.from_system_var.get()
+        to_system = self.to_system_var.get()
+        number_str = self.number_entry.get()
+
+        return (from_system, to_system, number_str)
+
     def perform_conversion(self):
-        pass
+        from_system, to_system, number_str = self.get_data()

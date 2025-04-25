@@ -5,7 +5,6 @@ from app.widgets import StyledButton, StyledEntry
 from app.pages.tutorialPage import TutorialPage
 from app.pages.resultPage import ResultPage
 from tkinter import ttk, messagebox
-from app.logic.calculator import calculate, generate_combinations
 
 class CalculationPage(ctk.CTkFrame):
     def __init__(self, parent, controller):
@@ -60,11 +59,47 @@ class CalculationPage(ctk.CTkFrame):
         self.calculate_button = StyledButton(
             main_frame, 
             text="Calculate", 
-            command=lambda: calculate(self.variables_entry, self.formula_entry, self.controller),
+            command=self.calculate,
             width=30
         )
         self.calculate_button.pack(pady=(30, 0))
 
-        # Back button to return to new MainPage
         StyledButton(self, text="Back to Home",
                 command=lambda: controller.show_frame("MainPage")).pack(pady=(30,0))
+
+    def generate_combinations(self, n):
+        num_combs = 2 ** n
+        combs = np.ones((n, num_combs), dtype=int)
+        for i in range(n):
+            padding = num_combs // (2 ** (i + 1))
+            idx = 0
+            for j in range(0, num_combs, padding):
+                if idx % 2 == 0:
+                    combs[i, j:j + padding] = 0
+                idx += 1
+        return combs
+
+    def calculate(self):
+            try:
+                syms_list = self.variables_entry.get().split()
+                python_expr = self.formula_entry.get()
+
+                if not syms_list or not python_expr:
+                    messagebox.showerror("Error", "Please enter variables and formula")
+                    return
+
+                n = len(syms_list)
+                combs = self.generate_combinations(n)
+
+                results = []
+                for i in range(combs.shape[1]):
+                    inputs = {k: v for k, v in zip(syms_list, combs[:, i].tolist())}
+                    result = int(eval(python_expr, {}, inputs))
+                    results.append(result)
+
+                result_page = self.controller.frames['ResultPage']
+                result_page.update_results(syms_list, combs, results)
+                self.controller.show_frame('ResultPage')
+            except Exception as e:
+                messagebox.showerror("Error", str(e))
+
